@@ -1,0 +1,44 @@
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0; /* Bordure plus douce */
+    border-radius: 12px;
+    padding: 8px 16px;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animation fluide */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Effet d'illumination au clic (Focus) */
+.search-box:focus-within {
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
+    transform: translateY(-1px);
+}
+
+.search-box img {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.search-box:focus-within img {
+    opacity: 1; /* L'icône s'illumine quand on tape */
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+    color: #1e293b;
+    background: transparent;
+}
+
+.search-box input::placeholder {
+    color: #94a3b8;
+}

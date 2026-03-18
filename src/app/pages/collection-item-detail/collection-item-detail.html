@@ -1,0 +1,91 @@
+<app-collection-item-card [item]="CollectionItem()"></app-collection-item-card>
+<form [formGroup]="itemFormGroup" (submit)="submit($event)">
+  
+  <!-- Name -->
+  <div class="form-field">
+    <label for="name">Name :</label>
+    <input id="name" name="name" formControlName="name"/>
+    @if (isFieldValid('name')) {
+      <div class="error">This field is required!</div>
+    }
+  </div>
+
+  <!-- Description -->
+  <div class="form-field">
+    <label for="description">Description :</label>
+    <textarea 
+    id="description" 
+    name="description" 
+    formControlName="description"
+     rows="5">
+    </textarea>
+
+    @if (isFieldValid('description')) {
+      <div class="error">This field is required!</div>
+    }
+  </div>
+
+  <!-- Image -->
+  <div class="form-field">
+    <label for="image">Image</label>
+    <input id="image" name="image" type="file" (change)="onFileChange($event)"/>
+    @if (isFieldValid('image')) {
+      <div class="error">This field is required.</div>
+    }
+  </div>
+
+  <!-- Rarity -->
+  <div class="form-field">
+    <label for="rarity">Rarity</label>
+    <select id="rarity" name="rarity" formControlName="rarity">
+      @for (rarity of rarities; track rarity) {
+        <option [value]="rarity">{{rarity}}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Price -->
+  <div class="form-field">
+    <label for="price">Price :</label>
+    <input id="price" name="price" formControlName="price" type="number"/>
+    @if (isFieldValid('price')) {
+      @let priceFc = itemFormGroup.get('price');
+      @if (priceFc?.hasError('min')){
+        <div class="error">Price must be positive!</div>
+      } @else {
+        <div class="error">This field is required!</div>
+        }
+       
+    }
+  </div>
+
+ 
+  
+
+    <button type="submit"
+            [disabled]="itemFormGroup.invalid"
+    >
+    Submit</button><br/>
+    
+</form>
+
+<!-- @let selectedItemId = itemId();
+@if(selectedItemId){
+    <p>Item{{selectedItemId}}!</p>
+    <button [routerLink]="['/item', selectedItemId + 1]">Next</button>
+} @else {
+    <p>New item!</p>
+} -->
+
+
+<!-- <form (submit)="submit($event)">
+  <label >Name:</label>
+  <input name="name" [(ngModel)]="name" /><br />
+  <button type="submit">Submit</button>
+</form> -->
+<!-- 
+<form (ngSubmit)="submit($event)">
+  <label>Name:</label>
+  <input name="name" [(ngModel)]="name" required /><br />
+  <button type="submit" [disabled]="!name">Submit</button>
+</form> -->

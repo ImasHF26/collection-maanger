@@ -1,0 +1,72 @@
+.collection-item-card {
+    position: relative;
+    background: #f0f6ff;
+    border: 1px solid #8ca3c7;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 16rem;
+    cursor: pointer;
+
+    /* --- SOLUTION POUR LA TAILLE DES CARTES --- */
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    height: 100%;           /* Force la carte à prendre toute la hauteur dispo */
+    min-height: 400px;      /* Fixe une hauteur minimale identique pour toutes */
+}
+
+.collection-item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rarity-chip {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: #4a6cf7;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.item-image {
+    margin: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    
+    /* --- SOLUTION POUR L'IMAGE --- */
+    height: 180px;          /* Hauteur fixe pour le conteneur d'image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;    /* L'image s'adapte sans déformer */
+}
+
+.item-description {
+    margin: 0.75rem 0;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    /* --- SOLUTION POUR LE TEXTE --- */
+    flex-grow: 1;           /* Ce bloc prend tout l'espace vide restant */
+}
+
+.item-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e8a3a;
+    margin: 0;
+    
+    /* Le prix sera toujours poussé tout en bas grâce au flex-grow du dessus */
+    padding-top: 0.5rem;
+}

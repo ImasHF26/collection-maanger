@@ -1,0 +1,56 @@
+<header id="collection-header">
+  <h1>My Collection</h1>
+  <div>
+    <app-search-bar 
+                    [(search)]="searchText"
+    >
+    </app-search-bar>
+    <!-- Clicked count : {{ count }}<br>
+    Search text : {{ searchText }} -->
+  </div>
+</header>
+
+<section class="collection-grid">
+  @for (item of collectionItems(); track item.name){
+    <!-- <app-collection-item-card [item]="item"></app-collection-item-card> -->
+    @switch (item.rarity) {
+      @case ('Legendary') {
+        <div>
+        <app-collection-item-card [item]="item"></app-collection-item-card>
+        <hr class="gold">
+        </div>
+      }
+      @case ('Rare') {
+        <div>
+        <app-collection-item-card [item]="item"></app-collection-item-card>
+        <hr class="grey">
+        </div>
+      }
+        @default {
+          <div>
+          <app-collection-item-card [item]="item"></app-collection-item-card>
+          <hr class="white">
+          </div>
+        }
+    }
+  } 
+  <!-- @empty {
+    <div>
+      No items found.
+    </div>
+  } -->
+    
+  <!-- <app-collection-item-card [item]="selectedItem()"></app-collection-item-card> -->
+</section>
+@let itemsCount = collectionItems().length;
+<div class="centered">
+  @if (itemsCount) {
+    Found {{ itemsCount }} items.
+  } @else {
+    No items found.
+  }
+</div>
+<div class="centered">
+  <button (click)="addGenericItem()">Add Generic Item</button>
+</div>
+<!-- <button (click)="incrementIndex()">Toggle</button>   -->

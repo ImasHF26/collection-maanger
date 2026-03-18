@@ -1,0 +1,11 @@
+<div class="search-box">
+    <img src="img/search.png">
+    <input 
+        id="live-search" 
+        type="search" 
+        placeholder="Search ..." 
+        autocomplete="off"
+        [(ngModel)]="search"
+    >
+    <button id="search-btn" (click)="searchClicked()">Search</button>
+</div>
